@@ -11,7 +11,7 @@ app.use(parserMiddleware)
 app.get('/', async (req: Request, res: Response) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
-    // secure: false,
+    secure: false,
     auth: {
       user: 'ubt.mailer@gmail.com',
       pass: 'ptzbiemtjjmbkbbs'
@@ -21,7 +21,7 @@ app.get('/', async (req: Request, res: Response) => {
   const mailOptions = {
     from: 'ubt.mailer@gmail.com',
     to: '7534640@gmail.com',
-    subject: 'Subject',
+    subject: '5',
     text: 'Email content'
   };
 
@@ -34,7 +34,7 @@ app.get('/', async (req: Request, res: Response) => {
     }
   });
   const random = Math.random();
-  res.json({ random: random })
+  res.send("5")
 })
 
 
