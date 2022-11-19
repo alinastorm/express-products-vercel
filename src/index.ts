@@ -8,7 +8,7 @@ const parserMiddleware = express.json()
 app.use(parserMiddleware)
 
 
-app.get('/', async(req: Request, res: Response) => {
+app.get('/', async (req: Request, res: Response) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     // secure: false,
@@ -34,7 +34,8 @@ app.get('/', async(req: Request, res: Response) => {
     }
   });
 
-  res.send('Hello Samurai')
+  const rundom = Math.random()
+  res.send(rundom)
 })
 
 
