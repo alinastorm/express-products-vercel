@@ -1,6 +1,5 @@
-import express, { Request, Response } from 'express'
-import { productsRouter } from './routers/products-router';
-import { runDb } from './repositories/db';
+import express, { Request, Response } from 'express';
+import nodemailer from "nodemailer";
 
 const app = express()
 const port = process.env.PORT || 5000
@@ -9,14 +8,37 @@ const parserMiddleware = express.json()
 app.use(parserMiddleware)
 
 
-app.get('/', (req: Request, res: Response) => {
+app.get('/', async(req: Request, res: Response) => {
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    // secure: false,
+    auth: {
+      user: 'ubt.mailer@gmail.com',
+      pass: 'ptzbiemtjjmbkbbs'
+    }
+  });
+
+  const mailOptions = {
+    from: 'ubt.mailer@gmail.com',
+    to: '7534640@gmail.com',
+    subject: 'Subject',
+    text: 'Email content'
+  };
+
+  await transporter.sendMail(mailOptions, function (error: any, info: any) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+      // do something useful
+    }
+  });
+
   res.send('Hello Samurai')
 })
 
-app.use('/products', productsRouter)
 
 const startApp = async () => {
-  await runDb()
   app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
   })
