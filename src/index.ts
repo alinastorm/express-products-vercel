@@ -33,9 +33,8 @@ app.get('/', async (req: Request, res: Response) => {
       // do something useful
     }
   });
-
-  const rundom = Math.random()
-  res.send(rundom)
+  const random = Math.random();
+  res.json({ random: random })
 })
 
 
