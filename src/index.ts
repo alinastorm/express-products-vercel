@@ -15,13 +15,17 @@ app.get('/', async (req: Request, res: Response) => {
     auth: {
       user: 'ubt.mailer@gmail.com',
       pass: 'ptzbiemtjjmbkbbs'
-    }
+    },
+    tls: {
+        // do not fail on invalid certs
+        rejectUnauthorized: false
+    },
   });
 
   const mailOptions = {
     from: 'ubt.mailer@gmail.com',
     to: '7534640@gmail.com',
-    subject: '6',
+    subject: '7',
     text: 'Email content'
   };
 
@@ -34,7 +38,7 @@ app.get('/', async (req: Request, res: Response) => {
     }
   });
   const random = Math.random();
-  res.send("6")
+  res.send("7")
 })
 
 
