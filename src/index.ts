@@ -11,21 +11,17 @@ app.use(parserMiddleware)
 app.get('/', async (req: Request, res: Response) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
-    secure: true,
+    secure: false,
     auth: {
       user: 'ubt.mailer@gmail.com',
       pass: 'ptzbiemtjjmbkbbs'
-    },
-    tls: {
-        // do not fail on invalid certs
-        rejectUnauthorized: false
-    },
+    }
   });
 
   const mailOptions = {
     from: 'ubt.mailer@gmail.com',
     to: '7534640@gmail.com',
-    subject: '7',
+    subject: '8',
     text: 'Email content'
   };
 
@@ -38,7 +34,7 @@ app.get('/', async (req: Request, res: Response) => {
     }
   });
   const random = Math.random();
-  res.send("7")
+  res.send("8")
 })
 
 
